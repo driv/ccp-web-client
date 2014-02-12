@@ -1,0 +1,13 @@
+<p>This is the login view.</p>
+<div ng-controller="LoginCtrl">
+  <form action="" ng-submit="login()">
+    <fieldset>
+      <legend>Login</legend>
+      <p><input ng-model="username" name="username" type="text" placeholder="UserName" required /></p>
+      <p><input ng-model="password" name="password" type="password" placeholder="Password" required /></p>
+      <input type="checkbox" ng-model="storeSession">
+      <p>{{loginStatus}}</p>
+      <p><button type="submit">Login</button></p>
+    </fieldset>
+  </form>
+</div>
