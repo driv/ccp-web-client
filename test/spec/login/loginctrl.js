@@ -31,6 +31,7 @@ describe('Controller: LoginCtrl', function() {
     expect(scope.login).toBeDefined();
     expect(scope.loginStatus).not.toBeDefined();
     expect(scope.storeSession).toBeFalsy();
+    expect(scope.loginCorrect).toBeFalsy();
   });
 
   it('should pass user and password to the CredentialsValidator', function() {
@@ -61,7 +62,8 @@ describe('Controller: LoginCtrl', function() {
     scope.$apply();
 
     expect(Session.login).not.toHaveBeenCalled();
-    expect(scope.loginStatus).toEqual('Incorrect credentials.');
+    expect(scope.isLoginCorrect).toBeFalsy();
+    expect(scope.isLoginIncorrect).toBeTruthy();
   });
 
   it('should store the session permanently if storeSession is set', function() {
@@ -84,6 +86,28 @@ describe('Controller: LoginCtrl', function() {
     scope.$apply();
 
     expect(PersistentSession.store).not.toHaveBeenCalled();
+  });
+
+  it('should change login flags if login is correct', function() {
+    mockCorrectLogin();
+
+    scope.login();
+    expect(scope.isLoginInProgress).toBeTruthy();
+
+    scope.$apply();
+
+    expect(scope.isLoginCorrect).toBeTruthy();
+    expect(scope.isLoginInProgress).toBeFalsy();
+  });
+
+  it('should remove the incorrect login flag when the login is correct', function() {
+    scope.isLoginIncorrect = true;
+    mockCorrectLogin();
+
+    scope.login();
+    scope.$apply();
+
+    expect(scope.isLoginIncorrect).toBeFalsy();
   });
 
   function mockCorrectLogin() {

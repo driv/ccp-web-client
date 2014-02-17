@@ -1,13 +1,36 @@
-<p>This is the login view.</p>
 <div ng-controller="LoginCtrl">
-  <form action="" ng-submit="login()">
-    <fieldset>
-      <legend>Login</legend>
-      <p><input ng-model="username" name="username" type="text" placeholder="UserName" required /></p>
-      <p><input ng-model="password" name="password" type="password" placeholder="Password" required /></p>
-      <input type="checkbox" ng-model="storeSession">
-      <p>{{loginStatus}}</p>
-      <p><button type="submit">Login</button></p>
-    </fieldset>
+  <form class="horizontal" action="" ng-submit="login()">
+    <h2>Login</h2>
+    <div class='form-group'>
+      <label for="username" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input class="form-control" ng-model="username" name="username" type="text" placeholder="Username" required />
+      </div>
+    </div>
+    <div class='form-group'>
+      <label for="username" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input class="form-control" ng-model="password" name="password" type="password" placeholder="Password" required />
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox" ng-model="storeSession"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <button class="btn btn-default" type="submit">Sign in</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <div ng-show="isLoginInProgress" class='alert alert-info'>Login in progress, please wait.</div>
+        <div ng-show="isLoginIncorrect" class='alert alert-warning'>Username or password incorrect, please retry.</div>
+        <div ng-show="isLoginCorrect" class='alert alert-success'>Login correct.</div>
+      </div>
+    </div>
   </form>
 </div>
