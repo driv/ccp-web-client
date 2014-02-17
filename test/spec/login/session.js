@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Service: Session', function () {
+describe('Service: Session', function() {
 
   // load the service's module
   beforeEach(module('ccpWebClientApp'));
 
   // instantiate service
   var Session;
-  beforeEach(inject(function (_Session_) {
+  beforeEach(inject(function(_Session_) {
     Session = _Session_;
   }));
 
-  it('should not be logged in nor have userId', function () {
+  it('should not be logged in nor have userId', function() {
     expect(Session.isLogged()).toBe(false);
     expect(Session.getUserData()).toBe(null);
   });
@@ -30,4 +30,9 @@ describe('Service: Session', function () {
     expect(Session.getUserData()).toBe(null);
   });
 
+  it('should not be logged without user data', function() {
+    Session.login();
+
+    expect(Session.isLogged()).toBe(false);
+  });
 });
