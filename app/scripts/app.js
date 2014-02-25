@@ -4,9 +4,10 @@ angular.module('ccpWebClientApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'config'
 ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/login', {
         templateUrl: 'views/login.html',

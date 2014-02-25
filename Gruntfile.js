@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -349,17 +349,47 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+
+    ngconstant: {
+      options: {
+        space: ' ',
+      },
+
+      development: [{
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '"use strict";\n\n<%=__ngModule %>',
+        name: 'config',
+        constants: {
+          ENV: {
+            name: 'development',
+            apiEndpoint: 'http://ccp-server-dev.herokuapp.com'
+          }
+        }
+      }],
+      production: [{
+        dest: '<%= yeoman.dist %>/scripts/config.js',
+        wrap: '"use strict";\n\n<%=__ngModule %>',
+        name: 'config',
+        constants: {
+          ENV: {
+            name: 'production',
+            apiEndpoint: 'http://api.example.com'
+          }
+        }
+      }]
     }
   });
 
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'bower-install',
       'concurrent:server',
       'autoprefixer',
@@ -368,7 +398,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function () {
+  grunt.registerTask('server', function() {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve']);
   });
@@ -383,6 +413,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:production',
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
