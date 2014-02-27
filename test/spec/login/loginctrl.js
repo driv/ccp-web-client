@@ -8,6 +8,7 @@ describe('Controller: LoginCtrl', function() {
   var LoginCtrl,
     scope,
     deferred,
+    location,
     CredentialsValidator,
     Session,
     PersistentSession;
@@ -16,7 +17,7 @@ describe('Controller: LoginCtrl', function() {
     password = 'test_password';
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, $rootScope, _CredentialsValidator_, _Session_, _$q_, _PersistentSession_) {
+  beforeEach(inject(function($controller, $rootScope, _CredentialsValidator_, _Session_, _$q_, _PersistentSession_, _$location_) {
     scope = $rootScope.$new();
     deferred = _$q_.defer();
     LoginCtrl = $controller('LoginCtrl', {
@@ -25,6 +26,7 @@ describe('Controller: LoginCtrl', function() {
     CredentialsValidator = _CredentialsValidator_;
     Session = _Session_;
     PersistentSession = _PersistentSession_;
+    location = _$location_;
   }));
 
   it('Should have a clean scope', function() {
@@ -108,6 +110,18 @@ describe('Controller: LoginCtrl', function() {
     scope.$apply();
 
     expect(scope.isLoginIncorrect).toBeFalsy();
+  });
+
+  it('should redirect to where the user was going after the login', function() {
+    spyOn(location, 'search').andReturn({
+      nextPath: 'newLocation'
+    });
+    mockCorrectLogin();
+
+    scope.login();
+    scope.$apply();
+
+    expect(location.path()).toBe('/newLocation');
   });
 
   function mockCorrectLogin() {

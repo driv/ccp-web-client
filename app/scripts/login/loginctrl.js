@@ -1,12 +1,23 @@
 'use strict';
 
 angular.module('ccpWebClientApp')
-  .controller('LoginCtrl', function($scope, CredentialsValidator, Session, PersistentSession) {
+  .controller('LoginCtrl', function($scope, $location, CredentialsValidator, Session, PersistentSession) {
     function storeSession(session) {
       Session.login(session);
       if ($scope.storeSession) {
         PersistentSession.store(session);
       }
+    }
+
+    function setCorrectLogin(session) {
+      storeSession(session);
+      $scope.isLoginCorrect = true;
+      $scope.isLoginIncorrect = false;
+    }
+
+    function redirect() {
+      var nextPath = $location.search().nextPath;
+      $location.path(nextPath ? nextPath : '');
     }
 
     $scope.login = function() {
@@ -15,9 +26,8 @@ angular.module('ccpWebClientApp')
         .then(function(result) {
           $scope.isLoginInProgress = false;
           if (result.isLoginCorrect) {
-            storeSession(result);
-            $scope.isLoginCorrect = true;
-            $scope.isLoginIncorrect = false;
+            setCorrectLogin(result);
+            redirect();
           } else {
             $scope.isLoginIncorrect = true;
           }
