@@ -40,7 +40,9 @@ describe('Controller: LoginCtrl', function() {
     scope.username = username;
     scope.password = password;
     spyOn(CredentialsValidator, 'obtainCredentials').andCallThrough();
+
     scope.login();
+
     expect(CredentialsValidator.obtainCredentials).toHaveBeenCalledWith(username, password);
   });
 

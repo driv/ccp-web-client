@@ -11,7 +11,7 @@ describe('Service: Session', function() {
     Session = _Session_;
   }));
 
-  it('should not be logged in nor have userId', function() {
+  it('should not be logged in nor have user data', function() {
     expect(Session.isLogged()).toBe(false);
     expect(Session.getUserData()).toBe(null);
   });
