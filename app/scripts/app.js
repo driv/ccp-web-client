@@ -11,7 +11,11 @@ angular.module('ccpWebClientApp', [
     $routeProvider
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterUserCtrl',
       })
       .otherwise({
         redirectTo: '/'
