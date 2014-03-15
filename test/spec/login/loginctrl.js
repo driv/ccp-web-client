@@ -124,6 +124,7 @@ describe('Controller: LoginCtrl', function() {
     scope.$apply();
 
     expect(location.path()).toBe('/newLocation');
+    expect(location.search().nextPath).toBeNull();
   });
 
   function mockCorrectLogin() {

@@ -18,6 +18,7 @@ angular.module('ccpWebClientApp')
     function redirect() {
       var nextPath = $location.search().nextPath;
       $location.path(nextPath ? nextPath : '');
+      $location.search().nextPath = null;
     }
 
     $scope.login = function() {
