@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp')
+angular.module('login')
   .factory('SessionResource', function($resource, ENV) {
     return $resource(ENV.apiEndpoint + '/sessions/:id', {
       id: '@id'

@@ -1,12 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'config'
-])
+angular.module('ccpWebClientApp', ['ngRoute', 'users', 'login'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/login', {

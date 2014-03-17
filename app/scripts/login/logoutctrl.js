@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp')
+angular.module('login')
   .controller('LogoutCtrl', function($scope, Session) {
     $scope.logout = function() {
       Session.logout();

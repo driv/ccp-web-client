@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Service: PersistentSession', function () {
+describe('Service: PersistentSession', function() {
 
   // load the service's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('login'));
 
   // instantiate service
   var PersistentSession,
     $cookieStore;
 
   var userData;
-  beforeEach(inject(function (_PersistentSession_,_$cookieStore_) {
+  beforeEach(inject(function(_PersistentSession_, _$cookieStore_) {
     PersistentSession = _PersistentSession_;
     $cookieStore = _$cookieStore_;
 
@@ -20,7 +20,7 @@ describe('Service: PersistentSession', function () {
     };
   }));
 
-  it('should use cookies to store the session', function () {
+  it('should use cookies to store the session', function() {
     expect(PersistentSession.store).toBeDefined();
     spyOn($cookieStore, 'put');
 
@@ -28,7 +28,7 @@ describe('Service: PersistentSession', function () {
     expect($cookieStore.put).toHaveBeenCalledWith('userData', userData);
   });
 
-  it('should be able to retrieve the stored session', function () {
+  it('should be able to retrieve the stored session', function() {
     expect(PersistentSession.retrieve).toBeDefined();
     spyOn($cookieStore, 'get').andReturn(userData);
 

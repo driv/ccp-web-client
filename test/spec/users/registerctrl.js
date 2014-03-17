@@ -3,7 +3,7 @@
 describe('Controller: RegisterUserCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('users'));
 
   var RegisterUserCtrl,
     scope,

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp')
+angular.module('login')
   .controller('LoginCtrl', function($scope, $location, CredentialsValidator, Session, PersistentSession) {
     function storeSession(session) {
       Session.login(session);

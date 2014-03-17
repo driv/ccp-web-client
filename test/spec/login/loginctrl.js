@@ -3,7 +3,7 @@
 describe('Controller: LoginCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('login'));
 
   var LoginCtrl,
     scope,

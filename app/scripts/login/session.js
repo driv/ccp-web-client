@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp')
+angular.module('login')
   .factory('Session', function() {
     var data = null;
 

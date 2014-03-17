@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp')
+angular.module('login')
   .service('AutomaticLogin', function Automaticlogin(PersistentSession, Session) {
     this.login = function() {
       var retrievedSession = PersistentSession.retrieve();

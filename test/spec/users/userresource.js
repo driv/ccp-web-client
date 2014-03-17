@@ -3,7 +3,7 @@
 describe('Service: UserResource', function() {
 
   // load the service's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('users'));
 
   // instantiate service
   var UserResource;

@@ -3,7 +3,7 @@
 describe('Controller: LogoutCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('login'));
 
   var LogoutctrlCtrl,
     scope,

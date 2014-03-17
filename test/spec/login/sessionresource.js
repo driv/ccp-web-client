@@ -3,7 +3,7 @@
 describe('Service: SessionResource', function() {
 
   // load the service's module
-  beforeEach(module('ccpWebClientApp'));
+  beforeEach(module('login'));
 
   // instantiate service
   var SessionResource;
