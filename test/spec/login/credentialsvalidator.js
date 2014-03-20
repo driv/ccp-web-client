@@ -19,11 +19,13 @@ describe('Service: CredentialsValidator', function() {
 
     CredentialsValidator = _CredentialsValidator_;
     SessionResource = _SessionResource_;
+  }));
 
+  beforeEach(function() {
     spyOn(SessionResource, 'save').andReturn({
       $promise: resourcePromise.promise
     });
-  }));
+  });
 
   it('should have a function obtainCredentials', function() {
     expect(CredentialsValidator.obtainCredentials).toBeDefined();
