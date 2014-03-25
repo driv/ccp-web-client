@@ -5,6 +5,9 @@ angular.module('login', [
   'ngCookies',
   'config'
 ])
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('authenticator');
+  })
   .run(function($rootScope, $location, Session) {
     $rootScope.$on('$routeChangeStart', function(event, next) {
       if (!next.public && !Session.isLogged()) {

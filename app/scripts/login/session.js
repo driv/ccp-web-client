@@ -4,7 +4,6 @@ angular.module('login')
   .factory('Session', function() {
     var data = null;
 
-
     return {
       isLogged: function() {
         return !!data;
