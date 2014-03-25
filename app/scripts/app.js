@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ccpWebClientApp', ['ngRoute', 'users', 'login'])
+angular.module('ccpWebClientApp', ['ngRoute', 'users', 'login', 'clips'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/login', {
@@ -12,6 +12,9 @@ angular.module('ccpWebClientApp', ['ngRoute', 'users', 'login'])
         templateUrl: 'views/register.html',
         controller: 'RegisterUserCtrl',
         public: true,
+      })
+      .when('/clips', {
+        templateUrl: 'views/clips/clips.html'
       })
       .otherwise({
         redirectTo: '/'

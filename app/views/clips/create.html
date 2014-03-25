@@ -1,0 +1,16 @@
+<div ng-controller="CreateClipCtrl">
+	<form class="horizontal" action="" ng-submit="send()">
+		<h2>Login</h2>
+		<div class='form-group'>
+			<label for="payload" class="col-sm-2 control-label">Clip</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" ng-model="payload" name="payload"  placeholder="Put your clip here" required />
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button class="btn btn-default" type="submit">Send clip</button>
+				</div>
+			</div>			
+		</div>
+	</form>
+</div>
