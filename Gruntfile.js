@@ -360,6 +360,17 @@ module.exports = function(grunt) {
         space: ' ',
       },
 
+      test: [{
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '"use strict";\n\n<%=__ngModule %>',
+        name: 'config',
+        constants: {
+          ENV: {
+            name: 'test',
+            apiEndpoint: ''
+          }
+        }
+      }],
       development: [{
         dest: '<%= yeoman.app %>/scripts/config.js',
         wrap: '"use strict";\n\n<%=__ngModule %>',
@@ -409,6 +420,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'ngconstant:test',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
